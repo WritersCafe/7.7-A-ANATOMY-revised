@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Writers Cafe 208 | Anatomy of 7.7B</title>
+
+<style>
+:root{
+  --coffee:#4b3429;
+  --espresso:#2b1d17;
+  --cream:#fff8ef;
+  --gold:#f4c15d;
+  --teal:#4aa7a0;
+  --softPink:#f4d7d7;
+  --rose:#d98989;
+  --mint:#bfe5df;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,var(--espresso),var(--coffee),var(--teal));
+  color:var(--cream);
+  padding:20px;
+}
+
+.container{
+  max-width:1150px;
+  margin:auto;
+  background:rgba(34,20,16,.86);
+  padding:35px;
+  border-radius:26px;
+  box-shadow:0 12px 35px rgba(0,0,0,.45);
+}
+
+.brand{text-align:center;color:var(--gold);font-weight:bold;letter-spacing:1px;}
+h1,h2,h3{text-align:center;}
+.intro{text-align:center;line-height:1.8;font-size:18px;}
+
+.card{
+  background:rgba(255,248,239,.10);
+  padding:24px;
+  border-radius:20px;
+  margin-top:22px;
+  line-height:1.7;
+}
+
+.student{border-left:6px solid var(--gold);}
+.teacher{border-left:6px solid var(--teal);background:rgba(191,229,223,.14);}
+.soft{background:rgba(244,215,215,.12);border-left:6px solid var(--rose);}
+
+.choice{
+  background:rgba(255,248,239,.12);
+  padding:16px;
+  border-radius:16px;
+  margin-top:14px;
+  border:2px solid transparent;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.choice:hover{border-color:var(--gold);transform:translateY(-2px);}
+.choice.selected{border-color:var(--gold);background:rgba(244,193,93,.20);}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:14px;
+  background:var(--gold);
+  color:var(--espresso);
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+  margin-top:15px;
+}
+
+.hidden{display:none;}
+.highlight{color:var(--gold);font-weight:bold;}
+.arrow{text-align:center;font-size:32px;margin:16px;color:var(--gold);}
+
+.flow{
+  text-align:center;
+  font-weight:bold;
+  color:var(--softPink);
+  line-height:2;
+  margin-top:10px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:15px;
+}
+
+.mini{
+  background:rgba(255,248,239,.10);
+  padding:16px;
+  border-radius:14px;
+}
+
+.footer{text-align:center;margin-top:35px;color:var(--gold);font-weight:bold;}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<p class="brand">#WritersCafe208</p>
+
+<h1>Anatomy of 7.7B</h1>
+
+<p class="intro">
+This experience helps teachers see the hidden thinking students must coordinate when analyzing how character qualities influence events and the resolution of conflict.
+</p>
+
+<div class="card teacher">
+<h2>7.7B — Character Qualities, Events, and Conflict Resolution</h2>
+
+<p>
+<span class="highlight">TEKS:</span>
+The student is expected to analyze how characters' qualities influence events and resolution of the conflict.
+</p>
+
+<p>
+<span class="highlight">Big Purpose:</span>
+Students are learning that plot does not just “happen.” Character qualities affect how a character responds to situations, which then shapes events and helps determine how the conflict is resolved.
+</p>
+
+<div class="soft">
+<h3>The Hidden Choreography</h3>
+
+<div class="flow">
+NOTICE CHARACTER QUALITY<br>
+↓<br>
+TRACK INTERNAL QUALITY → EXTERNAL ACTION<br>
+↓<br>
+CONNECT ACTION TO EVENTS<br>
+↓<br>
+EXPLAIN HOW EVENTS SHIFT THE CONFLICT<br>
+↓<br>
+ANALYZE HOW THE QUALITY SHAPES THE RESOLUTION
+</div>
+
+<p>
+This is the invisible thinking students must coordinate.
+</p>
+</div>
+
+<button onclick="startExperience()">Experience this TEKS as a Student</button>
+</div>
+
+<div id="experience" class="hidden">
+
+<div class="card student">
+<h2>Step 1 — Read Like a Student</h2>
+
+<p>
+At the beginning of the story, Jonah is nervous about speaking in front of his class. When his group project begins falling apart, he notices that no one wants to organize the presentation.
+<br><br>
+Even though he feels unsure, Jonah carefully listens to everyone’s ideas, creates a plan, and encourages each person to take a part.
+<br><br>
+By the end, the group presents successfully, and Jonah realizes that being thoughtful and patient helped the group solve the problem.
+</p>
+</div>
+
+<div class="arrow">↓</div>
+
+<div class="card student">
+<h2>Step 2 — What Character Quality Matters Most?</h2>
+
+<p>Which quality matters MOST because it influences what Jonah does and how the conflict is resolved?</p>
+
+<div class="choice" onclick="qualityChoice(this,'best')">
+Jonah is thoughtful and patient.
+</div>
+
+<div class="choice" onclick="qualityChoice(this,'partial')">
+Jonah is nervous about speaking.
+</div>
+
+<div class="choice" onclick="qualityChoice(this,'surface')">
+Jonah is part of a group project.
+</div>
+
+<div class="choice" onclick="qualityChoice(this,'weak')">
+Jonah has classmates.
+</div>
+
+<div id="qualityFeedback" class="card teacher hidden"></div>
+</div>
+
+<div id="choiceSection" class="hidden">
+
+<div class="arrow">↓</div>
+
+<div class="card student">
+<h2>Step 3 — Internal Quality → External Action</h2>
+
+<p>How does Jonah’s internal quality influence what he DOES externally?</p>
+
+<div class="choice" onclick="choiceChoice(this,'best')">
+Because Jonah is thoughtful and patient, he listens to the group, creates a plan, and encourages others.
+</div>
+
+<div class="choice" onclick="choiceChoice(this,'partial')">
+Because Jonah is nervous, he feels unsure about presenting.
+</div>
+
+<div class="choice" onclick="choiceChoice(this,'summary')">
+Jonah’s group has to finish a project.
+</div>
+
+<div class="choice" onclick="choiceChoice(this,'weak')">
+Jonah’s classmates are also in the story.
+</div>
+
+<div id="choiceFeedback" class="card teacher hidden"></div>
+</div>
+
+</div>
+
+<div id="eventSection" class="hidden">
+
+<div class="arrow">↓</div>
+
+<div class="card student">
+<h2>Step 4 — Connect Action to Events</h2>
+
+<p>What changes because of Jonah’s actions?</p>
+
+<div class="choice" onclick="eventChoice(this,'best')">
+The group becomes organized, each person gets a role, and the project begins moving forward.
+</div>
+
+<div class="choice" onclick="eventChoice(this,'partial')">
+Jonah feels less nervous after the group starts working.
+</div>
+
+<div class="choice" onclick="eventChoice(this,'summary')">
+The students work on a class project.
+</div>
+
+<div class="choice" onclick="eventChoice(this,'unsupported')">
+The teacher solves the problem for the group.
+</div>
+
+<div id="eventFeedback" class="card teacher hidden"></div>
+</div>
+
+</div>
+
+<div id="conflictSection" class="hidden">
+
+<div class="arrow">↓</div>
+
+<div class="card student">
+<h2>Step 5 — Explain Impact on Conflict</h2>
+
+<p>How does Jonah’s behavior affect the central conflict?</p>
+
+<div class="choice" onclick="conflictChoice(this,'best')">
+His patience and planning help solve the group’s disorganization, which moves the conflict toward resolution.
+</div>
+
+<div class="choice" onclick="conflictChoice(this,'partial')">
+His nervousness makes the presentation feel stressful.
+</div>
+
+<div class="choice" onclick="conflictChoice(this,'summary')">
+The group gives a presentation at the end.
+</div>
+
+<div class="choice" onclick="conflictChoice(this,'unsupported')">
+His classmates solve the problem without needing Jonah.
+</div>
+
+<div id="conflictFeedback" class="card teacher hidden"></div>
+</div>
+
+</div>
+
+<div id="analysisSection" class="hidden">
+
+<div class="arrow">↓</div>
+
+<div class="card student">
+<h2>Step 6 — Analyze the Full Relationship</h2>
+
+<p>Which answer BEST explains how Jonah’s qualities influence events and the resolution of the conflict?</p>
+
+<div class="choice" onclick="analysisChoice(this,'topic')">
+The story is about a group project.
+</div>
+
+<div class="choice" onclick="analysisChoice(this,'summary')">
+Jonah helps his group finish their presentation.
+</div>
+
+<div class="choice" onclick="analysisChoice(this,'best')">
+Jonah’s patience and thoughtfulness cause him to listen, organize the group, and encourage others, which changes the events and helps resolve the conflict successfully.
+</div>
+
+<div class="choice" onclick="analysisChoice(this,'unsupported')">
+Jonah becomes confident because everyone else tells him what to do.
+</div>
+
+<div id="analysisFeedback" class="card teacher hidden"></div>
+</div>
+
+</div>
+
+<div id="teacherLens" class="hidden">
+
+<div class="arrow">↓</div>
+
+<div class="card teacher">
+
+<h2>Cognitive Choreography</h2>
+
+<p>
+These are the thinking moves students had to coordinate while analyzing how character qualities influence events and conflict resolution.
+</p>
+
+<div class="grid">
+
+<div class="mini">
+<h3>Move 1: Name the Quality That Matters</h3>
+<p><span class="highlight">What the student’s mind has to do:</span> Identify the character quality that actually influences the plot.</p>
+<p><span class="highlight">Student inner voice:</span> “Jonah is not just nervous. His patience and thoughtfulness are what shape what happens.”</p>
+<p><span class="highlight">If this move breaks down:</span> Students name random traits that do not influence events.</p>
+<p><span class="highlight">Teacher look-for:</span> “This trait matters because…”</p>
+</div>
+
+<div class="mini">
+<h3>Move 2: Connect Internal Quality to External Action</h3>
+<p><span class="highlight">What the student’s mind has to do:</span> Explain how an internal quality leads to an external choice or behavior.</p>
+<p><span class="highlight">Student inner voice:</span> “Because Jonah is patient, he listens and makes a plan.”</p>
+<p><span class="highlight">If this move breaks down:</span> Students describe a trait but do not connect it to what the character does.</p>
+<p><span class="highlight">Teacher look-for:</span> “Because he is ___, he ___.”</p>
+</div>
+
+<div class="mini">
+<h3>Move 3: Track What Changes Because of the Action</h3>
+<p><span class="highlight">What the student’s mind has to do:</span> Explain how the character’s action changes events.</p>
+<p><span class="highlight">Student inner voice:</span> “Jonah’s plan helped the group get organized.”</p>
+<p><span class="highlight">If this move breaks down:</span> Students summarize events without explaining cause and effect.</p>
+<p><span class="highlight">Teacher look-for:</span> “This caused…” or “As a result…”</p>
+</div>
+
+<div class="mini">
+<h3>Move 4: Follow the Conflict Shift</h3>
+<p><span class="highlight">What the student’s mind has to do:</span> Track how the character’s actions affect the central problem.</p>
+<p><span class="highlight">Student inner voice:</span> “The group was falling apart, but Jonah’s choices helped fix that problem.”</p>
+<p><span class="highlight">If this move breaks down:</span> Students identify the conflict but cannot explain how it changes.</p>
+<p><span class="highlight">Teacher ask:</span> “How did this choice affect the problem?”</p>
+</div>
+
+<div class="mini">
+<h3>Move 5: Analyze the Resolution</h3>
+<p><span class="highlight">What the student’s mind has to do:</span> Explain how the character’s qualities helped shape the ending.</p>
+<p><span class="highlight">Student inner voice:</span> “The conflict was resolved because Jonah’s patience helped the group succeed.”</p>
+<p><span class="highlight">If this move breaks down:</span> Students say the conflict ended but cannot explain why.</p>
+<p><span class="highlight">Teacher ask:</span> “What quality helped bring the conflict to resolution?”</p>
+</div>
+
+</div>
+</div>
+
+<div class="card soft">
+<h2>Why Students Can Still Struggle with 7.7B</h2>
+
+<p>
+This is why students can retell the story perfectly and still miss questions about character influence.
+</p>
+
+<p class="highlight">
+They may know what happened, but they may not understand what caused it to happen.
+</p>
+
+<p>
+The Anatomy of a TEKS helps teachers stop asking only:
+</p>
+
+<p class="highlight">“Did they understand the plot?”</p>
+
+<p>
+and start asking:
+</p>
+
+<p class="highlight">“Can they explain how character qualities shaped the events and resolution?”</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+#WritersCafe208 — Teaching Thinking, Not Just Standards
+</div>
+
+</div>
+
+<script>
+function startExperience(){
+  document.getElementById("experience").classList.remove("hidden");
+}
+
+function clearChoices(parent){
+  parent.querySelectorAll(".choice").forEach(choice=>{
+    choice.classList.remove("selected");
+  });
+}
+
+function qualityChoice(el,type){
+  clearChoices(el.parentElement);
+  el.classList.add("selected");
+  const feedback=document.getElementById("qualityFeedback");
+  feedback.classList.remove("hidden");
+
+  if(type==="best"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>Yes. This quality matters because it shapes Jonah’s choices and helps explain how the conflict gets resolved.</p><p class="highlight">Students must learn to identify traits that actually influence the plot.</p>`;
+    document.getElementById("choiceSection").classList.remove("hidden");
+  }
+
+  if(type==="partial"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This is true, but it is not the strongest quality driving the resolution.</p><p>Students may notice emotion but miss the quality that actually changes events.</p>`;
+  }
+
+  if(type==="surface"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This is situation information, not a character quality.</p><p class="highlight">The student may be staying at the plot level.</p>`;
+  }
+
+  if(type==="weak"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This detail is true, but it does not explain Jonah’s influence on events or conflict resolution.</p>`;
+  }
+}
+
+function choiceChoice(el,type){
+  clearChoices(el.parentElement);
+  el.classList.add("selected");
+  const feedback=document.getElementById("choiceFeedback");
+  feedback.classList.remove("hidden");
+
+  if(type==="best"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>Yes. Now the student is connecting internal quality → external action.</p><p class="highlight">This is the bridge students must build before analyzing how the conflict changes.</p>`;
+    document.getElementById("eventSection").classList.remove("hidden");
+  }
+
+  if(type==="partial"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This is true, but it focuses on Jonah’s feeling rather than the action that changes the situation.</p>`;
+  }
+
+  if(type==="summary"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This retells the situation but does not connect character quality to action.</p>`;
+  }
+
+  if(type==="weak"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This detail does not show how Jonah’s qualities influence events.</p>`;
+  }
+}
+
+function eventChoice(el,type){
+  clearChoices(el.parentElement);
+  el.classList.add("selected");
+  const feedback=document.getElementById("eventFeedback");
+  feedback.classList.remove("hidden");
+
+  if(type==="best"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>Yes. The student is now seeing cause and effect.</p><p class="highlight">Jonah’s quality leads to action, and the action changes what happens next.</p>`;
+    document.getElementById("conflictSection").classList.remove("hidden");
+  }
+
+  if(type==="partial"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This may be true, but it focuses more on Jonah’s feeling than on how events change because of his actions.</p>`;
+  }
+
+  if(type==="summary"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This summarizes the task but does not explain what changed because of Jonah.</p>`;
+  }
+
+  if(type==="unsupported"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This is not supported. The text shows Jonah’s choices help move the group forward.</p>`;
+  }
+}
+
+function conflictChoice(el,type){
+  clearChoices(el.parentElement);
+  el.classList.add("selected");
+  const feedback=document.getElementById("conflictFeedback");
+  feedback.classList.remove("hidden");
+
+  if(type==="best"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>Yes. The student is now connecting character action to the conflict.</p><p class="highlight">They are seeing how Jonah’s quality changes the problem, not just what happens in the plot.</p>`;
+    document.getElementById("analysisSection").classList.remove("hidden");
+  }
+
+  if(type==="partial"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This connects to emotion, but it does not explain how Jonah helps resolve the conflict.</p>`;
+  }
+
+  if(type==="summary"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This tells what happened at the end, but not how Jonah’s qualities influenced that ending.</p>`;
+  }
+
+  if(type==="unsupported"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This is not supported. Jonah’s qualities are central to how the problem gets solved.</p>`;
+  }
+}
+
+function analysisChoice(el,type){
+  clearChoices(el.parentElement);
+  el.classList.add("selected");
+  const feedback=document.getElementById("analysisFeedback");
+  feedback.classList.remove("hidden");
+
+  if(type==="best"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>YES. This explains the full relationship: quality → action → event change → conflict shift → resolution.</p><p class="highlight">THIS is the anatomy of 7.7B.</p>`;
+    document.getElementById("teacherLens").classList.remove("hidden");
+  }
+
+  if(type==="topic"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This identifies the topic, but it does not analyze character influence.</p>`;
+  }
+
+  if(type==="summary"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This summarizes what happened, but it does not fully explain how Jonah’s qualities shaped the resolution.</p>`;
+  }
+
+  if(type==="unsupported"){
+    feedback.innerHTML=`<h3>Teacher Reflection</h3><p>This goes against the evidence. Jonah is not simply following others; his qualities help move the group toward resolution.</p>`;
+  }
+}
+</script>
+
+</body>
+</html>
